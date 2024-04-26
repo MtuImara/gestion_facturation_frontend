@@ -1,0 +1,352 @@
+<?php ob_start(); ?>
+
+<?php
+    $ch = curl_init();
+    $url = "http://192.168.40.91:8085/facturation/api/gestion_de_services/";
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if($e = curl_error($ch)){
+        echo $e;
+    }
+    else{
+        $datas = json_decode($response, true);
+        // print_r($response["data"]);
+    }
+
+    curl_close($ch);
+?>
+
+    <div class="row bg-title">
+        <div class="col-lg-9 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">D2S Service</h4>
+        </div>
+        <div class="col-lg-2 col-sm-4 col-xs-12">
+            <button class="btn btn-block btn-outline btn-rounded btn-info" data-toggle="modal" data-target="#responsive-modal-ajouter">Ajouter</button>
+        </div>
+    </div>
+    <!--------------------Debut Contenu ------------------->
+
+    <!-- /row -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Listes des Services</h3>
+                <p class="text-muted m-b-30">Cette liste est exportable </p>
+                
+                <div class="table-responsive">
+                    <table id="example23" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Référence du Service</th>
+                                <th>Nom du Service</th>
+                                <th>Commentaire</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                    $i=0;
+                                    foreach ($datas["data"]["contents"] as $repository): 
+                                    $i++;                        
+                            ?>
+                            <tr>
+                            <td><?= htmlspecialchars($repository["code"]) ?></td>
+                                <td><?= htmlspecialchars($repository["designation"]) ?></td>
+                                <td><?= htmlspecialchars($repository["commentaire"]) ?></td>
+                                <td class="text-nowrap">
+                                    <a href="serviceDetail.php?id=<?= $repository["id"] ?>" data-toggle="" data-target="" data-original-title="Voir"> <i class="fa fa-file-pdf-o text-inverse m-r-10"></i> </a>
+                                    <a href="#" data-toggle="modal" data-target="#responsive-modal-modifier<?=$i?>" data-original-title="Modifier"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                    <a href="#" data-toggle="modal" data-target="#responsive-modal1<?=$i?>" data-original-title="Supprimer"> <i class="fa fa-close text-danger"></i> </a>
+                                </td>
+
+                                <!-- sample modal modifier -->
+                                <!-- /.modal -->
+                                <div id="responsive-modal-modifier<?=$i?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Modification </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action="">
+                                                    <input type="hidden" value="<?= $repository["id"] ?>" class="form-control" id="id" name="id">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Code:</label>
+                                                        <input type="text" value="<?= $repository["code"] ?>" class="form-control" id="code" name="code">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Désignation:</label>
+                                                        <input type="text" value="<?= $repository["designation"] ?>" class="form-control" id="designation" name="designation">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Commentaire:</label>
+                                                        <textarea type="text" class="form-control" id="commentaire" name="commentaire"><?= $repository["commentaire"] ?></textarea>
+                                                    </div>                        
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>
+                                                        <button type="submit" name="modifier" class="btn btn-info waves-effect waves-light">Ajouter</button>
+                                                    </div>
+                                                    
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- sample modal suppression -->
+                                <!-- /.modal -->
+                                <div id="responsive-modal1<?=$i?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Suppression </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="post" action=" ">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Voulez-vous Supprimer <?= $repository["designation"] ?>?</label>
+                                                        <input type="hidden" value="<?= $repository["id"] ?>" class="form-control" id="id" name="id">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>
+                                                        <button type="submit" name="supprimer" class="btn btn-danger waves-effect waves-light">Supprimer</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </tr> 
+                            <?php endforeach; ?>                                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sample modal Ajouter -->
+    <!-- /.modal -->
+    <div id="responsive-modal-ajouter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Ajouter </h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Code:</label>
+                            <input type="text" class="form-control" id="code" name="code">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Désignation:</label>
+                            <input type="text" class="form-control" id="designation" name="designation">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">Commentaire:</label>
+                            <textarea type="text" class="form-control" id="commentaire" name="commentaire"></textarea>
+                        </div>                        
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>
+                            <button type="submit" name="ajouter" class="btn btn-info waves-effect waves-light">Ajouter</button>
+                        </div>
+                        
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!--------------------Fin Contenu ------------------->
+
+    <!--/row -->
+                
+    <!-- jQuery -->
+    
+    <!-- jQuery -->
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/tether.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="plugins/bower_components/datatables/jquery.dataTables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- end - This is for export functionality only -->
+    <script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before(
+                                '<tr class="group"><td colspan="5">' + group + '</td></tr>'
+                            );
+
+                            last = group;
+                        }
+                    });
+                }
+            });
+
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    </script>
+    <!--Style Switcher -->
+    <script src="plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+
+
+    <?php
+
+        if (isset($_POST['ajouter'])) 
+        {
+            $headers = [
+                // Les entêtes requises
+                "Access-Control-Allow-Origin: *",
+                "Content-type: application/json; charset= UTF-8",
+                "Access-Control-Allow-Methods: POST",
+                "Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method, Access-Control-Allow-Origin"
+            ];
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            //curl_setopt($ch, CURLOPT_POST, true);
+            //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
+
+            $response = curl_exec($ch);
+
+            $status_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+
+            curl_close($ch);
+
+            $data = json_decode($response, true);
+
+            header('Refresh: 0');
+
+        }
+
+        if (isset($_POST['modifier'])) 
+        {
+            $headers = [
+                // Les entêtes requises
+                "Access-Control-Allow-Origin: *",
+                "Content-type: application/json; charset= UTF-8",
+                "Access-Control-Allow-Methods: PUT",
+            ];
+            
+            $ch = curl_init();
+            
+            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/{$_POST['id']}");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
+            
+            $response = curl_exec($ch);
+            
+            $status_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+            
+            curl_close($ch);
+            
+            $dataModif = json_decode($response, true);
+
+            header('Refresh: 0');
+            
+        }
+
+        if (isset($_POST['supprimer'])) 
+        {
+            $headers = [
+                // Les entêtes requises
+                "Access-Control-Allow-Origin: *",
+                "Content-type: application/json; charset= UTF-8",
+                "Access-Control-Allow-Methods: DELETE"
+            ];
+        
+            $ch = curl_init();
+        
+            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/{$_POST['id']}");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        
+            $response = curl_exec($ch);
+        
+            $status_code = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+        
+            curl_close($ch);
+        
+            $data = json_decode($response, true);
+
+            header('Refresh: 0');
+        
+        }
+    ?>
+
+
+<?php
+    $content=ob_get_clean();
+    require_once "menu.php";
+?>
