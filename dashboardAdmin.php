@@ -55,6 +55,24 @@
 
 <?php
     $ch = curl_init();
+    $url = "http://127.0.0.1:8085/facturation/api/gestion_client/";
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if($e = curl_error($ch)){
+        echo $e;
+    }
+    else{
+        $dataGetAllClient = json_decode($response, true);
+    }
+    curl_close($ch);
+?>
+
+<?php
+    $ch = curl_init();
     $url = "http://127.0.0.1:8085/facturation/api/gestion_de_services/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -164,7 +182,7 @@
         <!-- Top Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-                <div class="top-left-part"><a class="logo" href="dashboardAdmin.html"><b><!--This is dark logo icon--><img src="plugins/images/eliteadmin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="plugins/images/eliteadmin-logo-dark.png" alt="home" class="light-logo" /></b><span class="hidden-xs"><!--This is dark logo text--><img src="plugins/images/eliteadmin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="plugins/images/eliteadmin-text-dark.png" alt="home" class="light-logo" /></span></a></div>
+                <div class="top-left-part"><a class="logo" href="dashboardAdmin.php"><b><!--This is dark logo icon--><img src="plugins/images/eliteadmin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="plugins/images/eliteadmin-logo-dark.png" alt="home" class="light-logo" /></b><span class="hidden-xs"><!--This is dark logo text--><img src="plugins/images/eliteadmin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="plugins/images/eliteadmin-text-dark.png" alt="home" class="light-logo" /></span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
                     <li>
@@ -379,7 +397,7 @@
                     </div>
                 </div>
                 <!--row -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-5 col-lg-4 col-sm-12 col-xs-12">
                         <div class="white-box">
                             <h3 class="box-title">Leads by Source</h3>
@@ -414,7 +432,7 @@
                             <div id="morris-area-chart2" style="height: 370px;"></div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- /.row -->
                 <!-- /row -->
                 <div class="row">
@@ -426,35 +444,23 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Nom</th>
-                                            <th>Prénom</th>
-                                            <th>Adresse</th>
+                                            <th>Code</th>
+                                            <th>Nom et Prénom</th>
+                                            <th>E-mail</th>
                                             <th>Téléphone</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>82898265289</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Deshmukh</td>
-                                            <td>Gaylord</td>
-                                            <td>@Ritesh</td>
-                                            <td>82898265289</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Sanghani</td>
-                                            <td>Gusikowski</td>
-                                            <td>@Govinda</td>
-                                            <td>82898265289</td>
-                                        </tr>
+                                        <?php 
+                                            foreach ($dataGetAllClient["data"]["contents"] as $repository):
+                                        ?>
+                                            <tr>
+                                                <td><?= htmlspecialchars($repository["code"]) ?></td>
+                                                <td><?= htmlspecialchars($repository["nom"]."  ".$repository["prenom"]) ?></td>
+                                                <td><?= htmlspecialchars($repository["email"]) ?></td>
+                                                <td><?= htmlspecialchars($repository["telephone"]) ?></td>
+                                            </tr>
+                                        <?php endforeach; ?> 
                                     </tbody>
                                 </table>
                             </div>

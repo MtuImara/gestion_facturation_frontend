@@ -11,7 +11,7 @@ $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/unites_de_mesure/{$_POST['id']}");
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
 
 $response = curl_exec($ch);

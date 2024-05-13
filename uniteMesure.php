@@ -24,7 +24,7 @@
 
     <div class="row bg-title">
         <div class="col-lg-9 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">D2S Service Unités de Mésure</h4>
+            <h4 class="page-title">D2S Services Unités de Mésure</h4>
         </div>
         <div class="col-lg-2 col-sm-4 col-xs-12">
             <button class="btn btn-block btn-outline btn-rounded btn-info" data-toggle="modal" data-target="#responsive-modal-ajouter">Ajouter</button>
