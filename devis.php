@@ -298,77 +298,7 @@
                                     <a href="#" data-toggle="modal" data-target="#responsive-modal-supprimer<?=$i?>" data-original-title="Supprimer"> <i class="fa fa-close text-danger"></i> </a>
                                 </td>
 
-                                <!-- sample modal Ajouter -->
-                                <!-- /.modal -->
-                                <div id="responsive-modal-ajouter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                <h4 class="modal-title">Ajouter </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                            <form method="post" action="">
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Code:</label>
-                                                        <input type="text" class="form-control" id="code" name="code">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Date:</label>
-                                                        <input type="date" class="form-control" id="dateOperation" name="dateOperation">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Client</label>
-                                                        <select class="form-control" id="idClient" name="idClient">
-                                                            <option></option>
-                                                            <?php echo fill_client_select_box($dataClient); ?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Service</label>
-                                                        <select class="form-control" id="id_service" name="id_service">
-                                                            <option></option>
-                                                            <?php echo fill_service_select_box($dataService); ?>
-                                                        </select>
-                                                    </div>
-                                                    <!-- <div class="form-group">
-                                                        <label class="control-label">Taux TVA</label>
-                                                        <select class="form-control" id="tauxTva" name="tauxTva">
-                                                            <option></option>
-                                                        </select>
-                                                    </div> -->
-                                                    <!-- <div class="form-group">
-                                                        <label class="control-label">Statut</label>
-                                                        <select class="form-control" id="typeStatut" name="typeStatut">
-                                                            <option></option>
-                                                            <?php //echo fill_statut_select_box($dataStatut); ?>
-                                                        </select>
-                                                    </div> -->
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="control-label">Commentaire:</label>
-                                                        <textarea type="text" class="form-control" id="commentaire" name="commentaire"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label">Etat</label>
-                                                        <select class="form-control" id="etat" name="etat">
-                                                            <option value="Accepté">Accepté</option>
-                                                            <option value="Refusé">Refusé</option>
-                                                            <option value="En attente">En attente</option>
-                                                            <option value="Annulée">Annulée</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>
-                                                        <button type="submit" name="ajouter" class="btn btn-info waves-effect waves-light">Ajouter</button>
-                                                    </div>
-                                                    
-                                                </form>
-                                            </div>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                                 <!-- sample modal modification -->
                                 <!-- /.modal -->
@@ -476,6 +406,78 @@
             </div>
         </div>
     </div>
+
+    <!-- sample modal Ajouter -->
+                                <!-- /.modal -->
+                                <div id="responsive-modal-ajouter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title">Ajouter </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                            <form method="post" action="">
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Code:</label>
+                                                        <input type="text" class="form-control" id="code" name="code">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Date:</label>
+                                                        <input type="date" class="form-control" id="dateOperation" name="dateOperation">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Client</label>
+                                                        <select class="form-control" id="idClient" name="idClient">
+                                                            <option></option>
+                                                            <?php echo fill_client_select_box($dataClient); ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Service</label>
+                                                        <select class="form-control" id="id_service" name="id_service">
+                                                            <option></option>
+                                                            <?php echo fill_service_select_box($dataService); ?>
+                                                        </select>
+                                                    </div>
+                                                    <!-- <div class="form-group">
+                                                        <label class="control-label">Taux TVA</label>
+                                                        <select class="form-control" id="tauxTva" name="tauxTva">
+                                                            <option></option>
+                                                        </select>
+                                                    </div> -->
+                                                    <!-- <div class="form-group">
+                                                        <label class="control-label">Statut</label>
+                                                        <select class="form-control" id="typeStatut" name="typeStatut">
+                                                            <option></option>
+                                                            <?php //echo fill_statut_select_box($dataStatut); ?>
+                                                        </select>
+                                                    </div> -->
+                                                    <div class="form-group">
+                                                        <label for="recipient-name" class="control-label">Commentaire:</label>
+                                                        <textarea type="text" class="form-control" id="commentaire" name="commentaire"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Etat</label>
+                                                        <select class="form-control" id="etat" name="etat">
+                                                            <option value="Accepté">Accepté</option>
+                                                            <option value="Refusé">Refusé</option>
+                                                            <option value="En attente">En attente</option>
+                                                            <option value="Annulée">Annulée</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Annuler</button>
+                                                        <button type="submit" name="ajouter" class="btn btn-info waves-effect waves-light">Ajouter</button>
+                                                    </div>
+                                                    
+                                                </form>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
 
 
     
