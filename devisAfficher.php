@@ -241,7 +241,7 @@
                                             <tbody>
                                                 <?php foreach ($datas["data"]["devisDetail"] as $repository): ?>
                                                     <tr>
-                                                        <td><?= htmlspecialchars($repository["service"]["designation"]) ?></td>
+                                                        <td><?= htmlspecialchars($repository["serviceDetail"]["designation"]) ?></td>
                                                         <td class="text-right"><?= $repository["quantite"] ?></td>
                                                         <td class="text-right"><?= $repository["prixUnitHt"] ?></td>
                                                         <td class="text-right"><?= $repository["montantHt"] ?></td>
