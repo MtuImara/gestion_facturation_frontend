@@ -252,19 +252,19 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="pull-right m-t-30 text-right">
-                                        <p>Taux TVA: <?= $datas["data"]["tauxTva"] ?> % </p>
-                                        <p>Montant TVA : <?= $datas["data"]["montantTva"] ?> Fbu </p>
+                                    <div class="pull-right m-t-30 text-right">                                        
                                         <hr>
-                                        <h3><b>Total HT :</b> <?= $datas["data"]["montantTotalHT"] ?> Fbu</h3>
-                                        
-                                        <h3><b>Total TTC :</b> <?= $datas["data"]["montantTotalTTC"] ?> Fbu</h3> </div>
+                                        <h3><b>Total :</b> <?= $datas["data"]["montantTotalHT"] ?> Fbu</h3>
                                     <div class="clearfix"></div>
                                     <hr>
-                                    <div class="text-right">
-                                        <button class="btn btn-info" type="submit" name="submit"> <i class="fa fa-paper-plane"></i> </button>
-                                        <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> </span> </button>
-                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="pull-right m-t-30 text-right">                                        
+                                        <p>Fait à Bujumbura, le <?= $datas["data"]["dateCreation"] ?> </p>
+                                        <p>D2S SERVICES</p>
+                                        <hr>
+                                        <div class="clearfix"></div>
+                                    
                                 </div>
                             </div>
                         </div>
