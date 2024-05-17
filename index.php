@@ -42,7 +42,7 @@
 <section id="wrapper" class="login-register">
   <div class="login-box">
     <div class="white-box">
-      <form class="form-horizontal form-material" id="loginform" action="index.html">
+      <form class="form-horizontal form-material" id="loginform" action="dashboardAdmin.php">
         <h3 class="box-title m-b-20">Sign In</h3>
         <div class="form-group ">
           <div class="col-xs-12">

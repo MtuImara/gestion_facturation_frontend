@@ -2,7 +2,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://192.168.40.91:8085/facturation/api/gestion_de_services/";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -271,7 +271,7 @@
 
             $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/");
+            curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             //curl_setopt($ch, CURLOPT_POST, true);
             //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -300,7 +300,7 @@
             
             $ch = curl_init();
             
-            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/{$_POST['id']}");
+            curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/{$_POST['id']}");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
@@ -328,7 +328,7 @@
         
             $ch = curl_init();
         
-            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/{$_POST['id']}");
+            curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/{$_POST['id']}");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         

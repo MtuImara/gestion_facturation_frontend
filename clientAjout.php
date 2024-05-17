@@ -10,7 +10,7 @@ $headers = [
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_client/");
+curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_client/");
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
 

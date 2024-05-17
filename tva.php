@@ -3,7 +3,7 @@
 <?php
 
     $ch = curl_init();
-    $url = "http://localhost:8085/facturation/api/taux_tvas/";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/taux_tvas/";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

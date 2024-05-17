@@ -10,7 +10,7 @@ $headers = [
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/unites_de_mesure/");
+curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/unites_de_mesure/");
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
 

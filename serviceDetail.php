@@ -4,7 +4,7 @@
 
     $id = $_GET["id"];
     $ch = curl_init();
-    $url = "http://localhost:8085/facturation/api/gestion_de_services/$id";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/$id";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -24,7 +24,7 @@
     <?php
 
     $ch = curl_init();
-    $url = "http://localhost:8085/facturation/api/unites_de_mesure/";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/unites_de_mesure/";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -316,7 +316,7 @@
 
             $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/ajout_detail");
+            curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/ajout_detail");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             //curl_setopt($ch, CURLOPT_POST, true);
             //curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
@@ -345,7 +345,7 @@
             
             $ch = curl_init();
             
-            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/modefier_detail/{$_POST['id']}");
+            curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/modefier_detail/{$_POST['id']}");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($_POST));
@@ -373,7 +373,7 @@
         
             $ch = curl_init();
         
-            curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/gestion_de_services/delete_detail/{$_POST['id']}");
+            curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/delete_detail/{$_POST['id']}");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
         

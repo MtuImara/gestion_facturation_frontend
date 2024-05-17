@@ -1,6 +1,6 @@
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_de_facture/count";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_facture/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -19,7 +19,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_de_devis/count";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_devis/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -37,7 +37,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_client/count";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_client/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -55,7 +55,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_client/";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_client/";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -73,7 +73,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_de_services/count";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_services/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -91,7 +91,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_de_bon_de_commande/count";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_bon_de_commande/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -109,7 +109,7 @@
 
 <?php
     $ch = curl_init();
-    $url = "http://127.0.0.1:8085/facturation/api/gestion_de_bon_de_livraison/count";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_de_bon_de_livraison/count";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -182,7 +182,7 @@
         <!-- Top Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-                <div class="top-left-part"><a class="logo" href="dashboardAdmin.php"><b><!--This is dark logo icon--><img src="plugins/images/eliteadmin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="plugins/images/eliteadmin-logo-dark.png" alt="home" class="light-logo" /></b><span class="hidden-xs"><!--This is dark logo text--><img src="plugins/images/eliteadmin-text.png" alt="home" class="dark-logo" /><!--This is light logo text--><img src="plugins/images/eliteadmin-text-dark.png" alt="home" class="light-logo" /></span></a></div>
+                <div class="top-left-part"><a class="logo" href="dashboardAdmin.php"><b><!--This is dark logo icon--><img src="plugins/images/eliteadmin-logo.png" alt="" class="dark-logo" /><!--This is light logo icon--><img src="plugins/images/eliteadmin-logo-dark.png" alt="" class="light-logo" /></b><span class="hidden-xs"><!--This is dark logo text--><img src="plugins/images/eliteadmin-text.png" alt="" class="dark-logo" /><!--This is light logo text--><img src="plugins/images/eliteadmin-text-dark.png" alt="" class="light-logo" /></span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
                     <li>
@@ -243,7 +243,7 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="index.html"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="index.php"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                     </div>
                 </div>

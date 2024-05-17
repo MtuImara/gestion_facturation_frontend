@@ -9,7 +9,7 @@
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL, "http://localhost:8085/facturation/api/taux_tvas/{$_POST['id']}");
+    curl_setopt($ch, CURLOPT_URL, "https://spectacular-reprieve-production.up.railway.app/facturation/api/taux_tvas/{$_POST['id']}");
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
 

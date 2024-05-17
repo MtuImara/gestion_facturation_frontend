@@ -3,7 +3,7 @@
 <?php
 
 $ch = curl_init();
-$url = "http://localhost:8085/facturation/api/gestion_client/";
+$url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/gestion_client/";
 
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

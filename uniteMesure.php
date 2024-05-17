@@ -3,7 +3,7 @@
 <?php
 
     $ch = curl_init();
-    $url = "http://localhost:8085/facturation/api/unites_de_mesure/";
+    $url = "https://spectacular-reprieve-production.up.railway.app/facturation/api/unites_de_mesure/";
 
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
